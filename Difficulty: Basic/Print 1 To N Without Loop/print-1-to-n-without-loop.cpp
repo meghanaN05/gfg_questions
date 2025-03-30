@@ -6,11 +6,13 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    // Complete this function
-    void printNos(int n) {
-        for(int i=1;i<=n;i++)
-       cout<<i<<" ";
-    }
+ void printNos(int n, int current = 1) {
+    if (current > n) return; 
+    cout << current << " ";
+    printNos(n, current + 1);
+}
+   
+   
 };
 
 //{ Driver Code Starts.
