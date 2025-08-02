@@ -1,43 +1,30 @@
-// User function template for C++
 class Solution {
   public:
     int findKRotation(vector<int> &arr) {
         // Code Here
-        int low=0;
-        int high=arr.size()-1;
-        int index=-1;
-          int ans = INT_MAX;
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
+        int n = arr.size();
+    int low = 0, high = n - 1;
 
-      
-            if (arr[low] <= arr[high]) {
-                if(arr[low]<ans){
-                    index=low;
-                    ans=arr[low];
-                }
-                break;
-            }
+    while (low <= high) {
+        // Case when the subarray is already sorted
+        if (arr[low] <= arr[high]) return low;
 
-      
-            if (arr[low] <= arr[mid]) {
-                 if(arr[low]<ans){
-                    index=low;
-                    ans=arr[low];
-                }
-                low = mid + 1;
-            }
+        int mid = low + (high - low) / 2;
+        int next = (mid + 1) % n;  // circular
+        int prev = (mid + n - 1) % n;
 
-            else {
+        // Check if mid is the minimum
+        if (arr[mid] <= arr[next] && arr[mid] <= arr[prev])
+            return mid;
 
-                high = mid - 1;
-                 if(arr[mid]<ans){
-                    index=mid;
-                    ans=arr[mid];
-                }
-            }
-        }
-        return index;
+        // Go to the unsorted part
+        else if (arr[mid] >= arr[low])
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+
+    return 0; 
         
     }
 };
