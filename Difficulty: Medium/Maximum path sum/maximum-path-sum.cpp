@@ -13,16 +13,17 @@ public:
 */
 class Solution {
   public:
-  int maxisum(Node* root,int &maxi){
+  int maxsum(Node *root,int &maxi){
       if(root==NULL) return 0;
-      int left=max(0,maxisum(root->left,maxi));
-      int right=max(0,maxisum(root->right,maxi));
-      maxi=max(maxi,left+right+root->data);
-      return max(left,right)+root->data;
-  }
+      int lh=max(0,maxsum(root->left,maxi));
+      int rh=max(0,maxsum(root->right,maxi));
+      maxi=max(maxi,lh+rh+root->data);
+      return max(rh,lh)+root->data;
+  } 
     int findMaxSum(Node *root) {
-       int maxi=INT_MIN;
-       maxisum(root,maxi);
-       return maxi;
+        int maxi=INT_MIN;
+        maxsum(root,maxi);
+        return maxi;
+        
     }
 };
