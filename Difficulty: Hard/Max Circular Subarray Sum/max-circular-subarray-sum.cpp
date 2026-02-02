@@ -1,29 +1,19 @@
 class Solution {
   public:
     int maxCircularSum(vector<int> &arr) {
-        // code here
-           int totalSum = 0;
-    int maxSum = INT_MIN, currMax = 0;
-    int minSum = INT_MAX, currMin = 0;
-
-    for (int num : arr) {
-       
-        currMax = max(num, currMax + num);
-        maxSum = max(maxSum, currMax);
-
-   
-        currMin = min(num, currMin + num);
-        minSum = min(minSum, currMin);
-
-      
-        totalSum += num;
-    }
-
-    
-    if (totalSum == minSum)
-        return maxSum;
-
-  
-    return max(maxSum, totalSum - minSum);
+        int maxi=INT_MIN,curr_maxi=0;
+        int mini=INT_MAX,curr_mini=0;
+        int total=0;
+        for(int x:arr){
+            curr_maxi=max(x,curr_maxi+x);
+            maxi=max(maxi,curr_maxi);
+             curr_mini=min(x,curr_mini+x);
+            mini=min(mini,curr_mini);
+            total+=x;
+        }
+        if(total==mini)
+        return maxi;
+        return max(maxi,total-mini);
+        
     }
 };
