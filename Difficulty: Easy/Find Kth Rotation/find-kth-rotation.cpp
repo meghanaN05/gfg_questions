@@ -2,29 +2,17 @@ class Solution {
   public:
     int findKRotation(vector<int> &arr) {
         // Code Here
-        int n = arr.size();
-    int low = 0, high = n - 1;
-
-    while (low <= high) {
-        // Case when the subarray is already sorted
-        if (arr[low] <= arr[high]) return low;
-
-        int mid = low + (high - low) / 2;
-        int next = (mid + 1) % n;  // circular
-        int prev = (mid + n - 1) % n;
-
-        // Check if mid is the minimum
-        if (arr[mid] <= arr[next] && arr[mid] <= arr[prev])
-            return mid;
-
-        // Go to the unsorted part
-        else if (arr[mid] >= arr[low])
-            low = mid + 1;
-        else
-            high = mid - 1;
-    }
-
-    return 0; 
+        
+        int cnt=0;
+        for(int i=0;i<arr.size()-1;i++){
+            if(arr[i]<arr[i+1]){
+                cnt++;
+            }
+            else{
+                return cnt+1;
+            }
+        }
+        if(cnt==arr.size()-1) return 0;
         
     }
 };
