@@ -1,18 +1,22 @@
 /*
-struct Node
-{
+class Node {
+  public:
     int data;
     Node* left;
     Node* right;
+
+    Node(int val) {
+        data = val;
+        left = nullptr;
+        right = nullptr;
+    }
 };
 */
+
 class Solution {
   public:
-    // Function to return a list of nodes visible from the top view
-    // from left to right in Binary Tree.
     vector<int> topView(Node *root) {
-        // code here
-        vector<int>ans;
+                vector<int>ans;
         if(root==NULL) return ans;
         map<int,int>mp;
         queue<pair<Node*,int>>q;
@@ -34,5 +38,7 @@ class Solution {
             ans.push_back(it.second);
         }
         return ans;
+
+        
     }
 };
