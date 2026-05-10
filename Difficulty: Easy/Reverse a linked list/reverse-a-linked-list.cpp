@@ -6,22 +6,25 @@ class Node {
 
     Node(int x) {
         data = x ;
-        next = NULL ;
+        next = nullptr ;
     }
 };
 */
 
 class Solution {
   public:
+
     Node* reverseList(Node* head) {
-       Node *prev=NULL;
-       Node *curr=head;
-       while(curr){
-           Node *next=curr->next;
-           curr->next=prev;
-           prev=curr;
-           curr=next;
+        if(head==NULL) return NULL;
+       Node* prev=NULL;
+       Node* temp=head;
+       while(temp!=NULL){
+           Node* dummy=temp->next;
+           temp->next=prev;
+           prev=temp;
+           temp=dummy;
        }
-        return prev;
+       return prev;
+      
     }
 };
