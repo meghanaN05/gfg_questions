@@ -1,7 +1,10 @@
 class Solution {
   public:
     int findMin(vector<int>& arr) {
-       return *min_element(arr.begin(),arr.end());
-        
+        int mini=INT_MAX;
+        for(int i=0;i<arr.size();i++){
+            mini=min(mini,arr[i]);
+        }
+        return mini;
     }
 };
